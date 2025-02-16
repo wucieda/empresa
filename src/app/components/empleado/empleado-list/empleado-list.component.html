@@ -1,0 +1,9 @@
+<h2>Lista de Empleados</h2>
+<button routerLink="/empleados/nuevo">Nuevo Empleado</button>
+<ul>
+  <li *ngFor="let empleado of empleados">
+    <a [routerLink]="['/empleados/detalle', empleado.id]">{{ empleado.nombre }}</a>
+    <button [routerLink]="['/empleados/editar', empleado.id]">Editar</button>
+    <button (click)="abrirModal(empleado.id)">Eliminar</button>
+  </li>
+</ul>

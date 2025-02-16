@@ -1,0 +1,10 @@
+<h2>{{ editMode ? 'Editar' : 'Nuevo' }} Empleado</h2>
+<form (ngSubmit)="guardarEmpleado()">
+  <label>Nombre:</label>
+  <input type="text" [(ngModel)]="empleado.nombre" name="nombre" required />
+  <label>Email:</label>
+  <input type="email" [(ngModel)]="empleado.email" name="email" required />
+  <label>Teléfono:</label>
+  <input type="text" [(ngModel)]="empleado.telefono" name="telefono" required />
+  <button type="submit">Guardar</button>
+</form>
