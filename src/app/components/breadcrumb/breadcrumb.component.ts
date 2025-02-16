@@ -23,11 +23,20 @@ export class BreadcrumbComponent implements OnInit {
 
   private createBreadcrumbs(route: ActivatedRoute, path: string = '', breadcrumbs: { label: string, url: string }[] = []): { label: string, url: string }[] {
     const routeConfig = route.routeConfig;
-    const routeUrl = route.snapshot.url.map(segment => segment.path).join('/');
 
-    if (routeConfig && routeConfig.path) {
-      path += `/${routeUrl}`;
-      breadcrumbs.push({ label: routeUrl || routeConfig.path, url: path });
+    if (routeConfig) {
+      let breadcrumbLabel = routeConfig.data?.['breadcrumb'] || routeConfig.path;
+
+      // Si la ruta contiene un parámetro (como :id), usa el nombre estático
+      if (breadcrumbLabel?.includes(':')) {
+        breadcrumbLabel = breadcrumbLabel.replace(/:\w+/, ''); // Reemplaza ":id" por un string vacío
+      }
+
+      path += `/${routeConfig.path?.split('/:')[0]}`; // Evita mostrar "/:id" en la URL
+
+      if (breadcrumbLabel) {
+        breadcrumbs.push({ label: breadcrumbLabel, url: path });
+      }
     }
 
     if (route.firstChild) {
