@@ -1,12 +1,12 @@
-import { Component } from '@angular/core';
-import { RouterLink } from '@angular/router';
-
+import { Component, Input } from '@angular/core';
+import { Employee } from '../../model/employee.model';
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-empleado-detail',
-  imports: [RouterLink],
+  imports: [ CommonModule],
   templateUrl: './empleado-detail.component.html',
   styleUrl: './empleado-detail.component.scss'
 })
 export class EmpleadoDetailComponent {
-  empleado = { nombre: 'Juan Pérez', email: 'juan@example.com', telefono: '123456789' };
+  @Input() employee: Employee | null = null;
 }

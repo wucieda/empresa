@@ -1,5 +1,43 @@
-<h2>Detalles del Empleado</h2>
-<p>Nombre: {{ empleado.nombre }}</p>
-<p>Email: {{ empleado.email }}</p>
-<p>Teléfono: {{ empleado.telefono }}</p>
-<button routerLink="/empleados">Volver</button>
+<div *ngIf="employee">
+    <h2>Employee Details</h2>
+
+    <h3>Personal Details</h3>
+    <p><strong>First Name:</strong> {{ employee?.personalDetails?.firstName }}</p>
+    <p><strong>Last Name:</strong> {{ employee?.personalDetails?.lastName }}</p>
+    <p><strong>Gender:</strong> {{ employee?.personalDetails?.gender }}</p>
+    <p><strong>Date of Birth:</strong> {{ employee?.personalDetails?.dateOfBirth }}</p>
+    <p><strong>Marital Status:</strong> {{ employee?.personalDetails?.maritalStatus }}</p>
+    <p><strong>Nationality:</strong> {{ employee?.personalDetails?.nationality }}</p>
+
+    <h3>Contact Details</h3>
+    <p><strong>Email:</strong> {{ employee?.contactDetails?.email }}</p>
+    <p><strong>Phone:</strong> {{ employee?.contactDetails?.phone }}</p>
+    <p><strong>Address:</strong> {{ employee?.contactDetails?.address?.street }}, {{
+        employee?.contactDetails?.address?.city }}, {{ employee?.contactDetails?.address?.state }}, {{
+        employee?.contactDetails?.address?.zipCode }}, {{ employee?.contactDetails?.address?.country }}</p>
+
+    <h3>Employment Details</h3>
+    <p><strong>Employee ID:</strong> {{ employee?.employmentDetails?.employeeId }}</p>
+    <p><strong>Department:</strong> {{ employee?.employmentDetails?.department }}</p>
+    <p><strong>Job Title:</strong> {{ employee?.employmentDetails?.jobTitle }}</p>
+    <p><strong>Manager:</strong> {{ employee?.employmentDetails?.manager }}</p>
+    <p><strong>Date of Joining:</strong> {{ employee?.employmentDetails?.dateOfJoining }}</p>
+    <p><strong>Employment Type:</strong> {{ employee?.employmentDetails?.employmentType }}</p>
+    <p><strong>Salary:</strong> {{ employee?.employmentDetails?.salary }}</p>
+
+    <h3>Emergency Contact</h3>
+    <p><strong>Name:</strong> {{ employee?.emergencyContact?.name }}</p>
+    <p><strong>Relationship:</strong> {{ employee?.emergencyContact?.relationship }}</p>
+    <p><strong>Phone:</strong> {{ employee?.emergencyContact?.phone }}</p>
+    <p><strong>Email:</strong> {{ employee?.emergencyContact?.email }}</p>
+
+    <h3>Education Details</h3>
+    <p><strong>Highest Degree:</strong> {{ employee?.educationDetails?.highestDegree }}</p>
+    <p><strong>Institution:</strong> {{ employee?.educationDetails?.institution }}</p>
+    <p><strong>Year of Graduation:</strong> {{ employee?.educationDetails?.yearOfGraduation }}</p>
+
+    <h3>Bank Details</h3>
+    <p><strong>Bank Name:</strong> {{ employee?.bankDetails?.bankName }}</p>
+    <p><strong>Account Number:</strong> {{ employee?.bankDetails?.accountNumber }}</p>
+    <p><strong>Branch Code:</strong> {{ employee?.bankDetails?.branchCode }}</p>
+</div>

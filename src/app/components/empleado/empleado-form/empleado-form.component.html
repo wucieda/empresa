@@ -1,10 +1,143 @@
-<h2>{{ editMode ? 'Editar' : 'Nuevo' }} Empleado</h2>
-<form (ngSubmit)="guardarEmpleado()">
-  <label>Nombre:</label>
-  <input type="text" [(ngModel)]="empleado.nombre" name="nombre" required />
-  <label>Email:</label>
-  <input type="email" [(ngModel)]="empleado.email" name="email" required />
-  <label>Teléfono:</label>
-  <input type="text" [(ngModel)]="empleado.telefono" name="telefono" required />
-  <button type="submit">Guardar</button>
+<form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+  <!-- Personal Details -->
+  <fieldset formGroupName="personalDetails">
+    <legend>Personal Details</legend>
+    <mat-form-field>
+      <input matInput placeholder="First Name" formControlName="firstName">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Last Name" formControlName="lastName">
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Gender" formControlName="gender">
+        <mat-option value="male">Male</mat-option>
+        <mat-option value="female">Female</mat-option>
+        <mat-option value="other">Other</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="dobPicker" placeholder="Date of Birth" formControlName="dateOfBirth">
+      <mat-datepicker-toggle matSuffix [for]="dobPicker"></mat-datepicker-toggle>
+      <mat-datepicker #dobPicker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Marital Status" formControlName="maritalStatus">
+        <mat-option value="single">Single</mat-option>
+        <mat-option value="married">Married</mat-option>
+        <mat-option value="divorced">Divorced</mat-option>
+        <mat-option value="widowed">Widowed</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Nationality" formControlName="nationality">
+    </mat-form-field>
+  </fieldset>
+
+  <!-- Contact Details -->
+  <fieldset formGroupName="contactDetails">
+    <legend>Contact Details</legend>
+    <mat-form-field>
+      <input matInput placeholder="Email" formControlName="email">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Phone" formControlName="phone">
+    </mat-form-field>
+    <fieldset formGroupName="address">
+      <legend>Address</legend>
+      <mat-form-field>
+        <input matInput placeholder="Street" formControlName="street">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="City" formControlName="city">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="State" formControlName="state">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Zip Code" formControlName="zipCode">
+      </mat-form-field>
+      <mat-form-field>
+        <input matInput placeholder="Country" formControlName="country">
+      </mat-form-field>
+    </fieldset>
+  </fieldset>
+
+  <!-- Employment Details -->
+  <fieldset formGroupName="employmentDetails">
+    <legend>Employment Details</legend>
+    <mat-form-field>
+      <input matInput placeholder="Employee ID" formControlName="employeeId">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Department" formControlName="department">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Job Title" formControlName="jobTitle">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Manager" formControlName="manager">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput [matDatepicker]="dojPicker" placeholder="Date of Joining" formControlName="dateOfJoining">
+      <mat-datepicker-toggle matSuffix [for]="dojPicker"></mat-datepicker-toggle>
+      <mat-datepicker #dojPicker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-select placeholder="Employment Type" formControlName="employmentType">
+        <mat-option value="full-time">Full-Time</mat-option>
+        <mat-option value="part-time">Part-Time</mat-option>
+        <mat-option value="contract">Contract</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Salary" formControlName="salary">
+    </mat-form-field>
+  </fieldset>
+
+  <!-- Emergency Contact -->
+  <fieldset formGroupName="emergencyContact">
+    <legend>Emergency Contact</legend>
+    <mat-form-field>
+      <input matInput placeholder="Name" formControlName="name">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Relationship" formControlName="relationship">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Phone" formControlName="phone">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Email" formControlName="email">
+    </mat-form-field>
+  </fieldset>
+
+  <!-- Education Details -->
+  <fieldset formGroupName="educationDetails">
+    <legend>Education Details</legend>
+    <mat-form-field>
+      <input matInput placeholder="Highest Degree" formControlName="highestDegree">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Institution" formControlName="institution">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Year of Graduation" formControlName="yearOfGraduation">
+    </mat-form-field>
+  </fieldset>
+
+  <!-- Bank Details -->
+  <fieldset formGroupName="bankDetails">
+    <legend>Bank Details</legend>
+    <mat-form-field>
+      <input matInput placeholder="Bank Name" formControlName="bankName">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Account Number" formControlName="accountNumber">
+    </mat-form-field>
+    <mat-form-field>
+      <input matInput placeholder="Branch Code" formControlName="branchCode">
+    </mat-form-field>
+  </fieldset>
+
+  <button mat-raised-button color="primary" type="submit">Submit</button>
 </form>
